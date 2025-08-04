@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="h-[85%] w-[100%] p-[1rem] flex justify-between items-center gap-2 bg-[#000000d6] rounded-4xl md:w-[70%] ">
           <div className="flex justify-center items-center gap-[1px]">
             <img
-              src="/src/assets/Adobe Express - file.png"
+              src="/src/assets/icons.png"
               alt="Call Icon"
               className="h-[55px] w-[55px]"
             />
