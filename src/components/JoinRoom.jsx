@@ -11,6 +11,7 @@ import { ShineBorder } from "../components/magicui/shine-border";
 import { AvatarCircles } from "../components/magicui/avatar-circles";
 import Dither from '../tailwind/Dither/Dither';
 import Toast from "react-hot-toast";
+import LiquidChrome from '../tailwind/LiquidChrome/LiquidChrome';
 
 
 
@@ -70,7 +71,7 @@ const validateInput = (roomId) =>{
   return (
     <div className="h-[100vh] w-[100%] bg-[#c7c7c7] relative flex justify-center items-center text-white custom-font2">
       <div className="h-[100%] w-[100%] relative ">
-        <Dither
+        {/* <Dither
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}
           enableMouseInteraction={true}
@@ -79,55 +80,59 @@ const validateInput = (roomId) =>{
           waveAmplitude={0.56}
           waveFrequency={3}
           waveSpeed={0.02}
+        /> */}
+        <LiquidChrome
+          baseColor={[0, 0, 0.1]}
+          speed={0.6}
+          amplitude={0.45}
+          interactive={true}
         />
       </div>
 
+      <div className="h-[400px] w-[90%]  rounded-2xl  absolute flex justify-center items-center md:w-[50%] ">
+        <Terminal className="bg-white text-black relative overflow-hidden ">
+          <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+          <TypingAnimation className="text-[25px]">
+            &gt; Create RoomId
+          </TypingAnimation>
 
-          <div className="h-[400px] w-[90%]  rounded-2xl  absolute flex justify-center items-center md:w-[50%] ">
-            <Terminal className="bg-white text-black relative overflow-hidden ">
-              <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
-              <TypingAnimation className="text-[25px]">
-                &gt; Create RoomId
-              </TypingAnimation>
+          <AnimatedSpan delay={1500} className="text-green-500">
+            <span>✔ Must be 6–20 characters long</span>
+          </AnimatedSpan>
 
-              <AnimatedSpan delay={1500} className="text-green-500">
-                <span>✔ It must not be empty</span>
-              </AnimatedSpan>
+          <AnimatedSpan delay={2000} className="text-green-500">
+            <span>✔ Can contain letters and numbers</span>
+          </AnimatedSpan>
 
-              <AnimatedSpan delay={2000} className="text-green-500">
-                <span>✔ It should be between 4 and 20 characters long</span>
-              </AnimatedSpan>
+          <AnimatedSpan delay={2500} className="text-green-500">
+            <span>✔ No spaces are ever allowed</span>
+          </AnimatedSpan>
 
-              <AnimatedSpan delay={2500} className="text-green-500">
-                <span>✔ It can only contain letters, numbers and Symbols</span>
-              </AnimatedSpan>
+          <AnimatedSpan delay={3000} className="text-green-500">
+            <span>✔ It must be unique</span>
+          </AnimatedSpan>
+          <input
+            type="text"
+            placeholder="Enter Your RoomID"
+            value={roomId}
+            onChange={(e) => setRoomId(e.target.value)}
+            className="w-[250px] bg-[white] text-black rounded-[10px] p-[10px] mt-[1rem] placeholder:text-black border border-black "
+          />
 
-              <AnimatedSpan delay={3000} className="text-green-500">
-                <span>✔ It must be unique</span>
-              </AnimatedSpan>
-              <input
-                type="text"
-                placeholder="Enter Your RoomID"
-                value={roomId}
-                onChange={(e) => setRoomId(e.target.value)}
-                className="w-[250px] bg-[white] text-black rounded-[10px] p-[10px] mt-[1rem] placeholder:text-black border border-black "
-              />
-
-              <ShinyButton
-                className="w-[100px] h-[2.5rem] bg-[#000000] text-white border-none mt-[1.5rem]"
-                onClick={handleJoin}
-              >
-                Join
-              </ShinyButton>
-              <AvatarCircles
-                numPeople={99}
-                avatarUrls={avatars}
-                className="mt-[1.5rem]"
-              />
-            </Terminal>
-          </div>
-        </div>
-    
+          <ShinyButton
+            className="w-[100px] h-[2.5rem] bg-[#000000] text-white border-none mt-[1.5rem]"
+            onClick={handleJoin}
+          >
+            Join
+          </ShinyButton>
+          <AvatarCircles
+            numPeople={99}
+            avatarUrls={avatars}
+            className="mt-[1.5rem]"
+          />
+        </Terminal>
+      </div>
+    </div>
   );
 };
 
