@@ -1,49 +1,44 @@
-
-import {RouterProvider, createBrowserRouter} from 'react-router-dom'
-import Room from './components/Room'
-import JoinRoom from './components/JoinRoom'
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Room from "./components/Room";
+import JoinRoom from "./components/JoinRoom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 function App() {
-
-  const router  =  createBrowserRouter([
+  const router = createBrowserRouter([
     {
       path: "/",
       element: (
         <div>
-          <Navbar/>
-          <Home/>
+          <Navbar />
+          <Home />
         </div>
-
       ),
     },
     {
       path: "/joinroom",
-      element:(
+      element: (
         <div>
-          <Navbar/>
-          <JoinRoom/>
+          <Navbar />
+          <JoinRoom />
         </div>
-      )
-
+      ),
     },
     {
-      path: "/room",
-      element:(
-        <Room/>
+      path: "/room/:roomId",
+      element: (
+        <div>
+          <Room />
+        </div>
       ),
-    }
+    },
   ]);
- 
 
   return (
     <div>
       <RouterProvider router={router} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

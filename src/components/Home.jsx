@@ -8,8 +8,7 @@ import { OrbitingCircles } from "../components/magicui/orbiting-circles";
 import { File, Settings, Search } from "lucide-react";
 
 const Home = () => {
-
-  //! ALL ICONS 
+  //! ALL ICONS
   const Icons = {
     gitHub: () => (
       <svg width="100" height="100" viewBox="0 0 438.549 438.549">
@@ -178,7 +177,7 @@ const Home = () => {
           </Magnet>
         </div>
         <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden md:hidden">
-          <OrbitingCircles iconSize={30} >
+          <OrbitingCircles iconSize={30}>
             <Icons.whatsapp />
             <Icons.notion />
             <Icons.openai />
