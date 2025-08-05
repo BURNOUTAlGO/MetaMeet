@@ -10,6 +10,7 @@ import { ShinyButton } from "./magicui/shiny-button";
 import { ShineBorder } from "../components/magicui/shine-border";
 import { AvatarCircles } from "../components/magicui/avatar-circles";
 import Dither from '../tailwind/Dither/Dither';
+import Toast from "react-hot-toast";
 
 
 
@@ -48,12 +49,23 @@ const JoinRoom = () => {
     profileUrl: "https://github.com/itsarghyadas",
   },
 ];
+   
+
+const validateInput = (roomId) =>{
+  const regex = /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]{6,20}$/;
+  return regex.test(roomId);
+};
  
 
   function handleJoin() {
-    if (roomId.trim()) {
-      navigate(`/room/${roomId}`);
-    }
+       if (validateInput(roomId)) {
+
+          navigate(`/room/${roomId}`);
+
+       }else{
+         Toast.error("Invalid Room ID! Use 6–20 characters: letters, numbers, or symbols. No spaces.");
+        
+       }
   }
   return (
     <div className="h-[100vh] w-[100%] bg-[#c7c7c7] relative flex justify-center items-center text-white custom-font2">
