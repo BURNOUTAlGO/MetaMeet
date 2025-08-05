@@ -29,7 +29,7 @@ const Navbar = () => {
           </button>
        
 
-          <div className="h-[80%] w-auto p-[1rem]  justify-center items-center gap-[2rem] text-[16px]  rounded-4xl bg-[#000000] text-[#b2b2b2] hidden md:flex ">
+          <div className="h-[80%] w-auto p-[1rem]  justify-center items-center gap-[2rem] text-[16px]  rounded-4xl bg-[#000000] text-[#b5b5b5] hidden md:flex ">
             
             <NavLink to="/" spy={true}smooth={true}offset={50}duration={500} className=" transition-all duration-300 hover:text-white">Home</NavLink>
             <Link to="about"spy={true}smooth={true}offset={50}duration={500} className=" transition-all duration-300 hover:text-white">About</Link>
