@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="h-[80px] w-[100vw] flex justify-center items-center p-1 fixed  text-white text-shadow-lg z-99 custom-font2 ">
       <div className="h-[80%] w-[85%] flex justify-between items-center gap-[4rem] text-[17px] font-semibold rounded-4xl ">
-        <div className="h-[85%] w-[100%] p-[1rem] flex justify-between items-center gap-2 bg-[#000000d6] rounded-4xl md:w-[70%] ">
+        <div className="h-[85%] w-[100%] p-[1rem] flex justify-between items-center gap-2 bg-[#000000d6] rounded-4xl md:w-[100%] ">
           <div className="flex justify-center items-center gap-[1px]">
             <img
               src={icon}
