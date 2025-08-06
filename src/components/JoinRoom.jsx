@@ -112,7 +112,7 @@ const JoinRoom = () => {
           </AnimatedSpan>
           <input
             type="text"
-            placeholder={type === "create" ? "Create your RoomId" : "Enter your JoinId"}
+            placeholder={type === "create" ? "Create your RoomId" : "Enter JoiningId"}
             value={roomId}
             onChange={(e) => setRoomId(e.target.value)}
             className="w-[250px] bg-[white] text-black rounded-[10px] p-[10px] mt-[1rem] placeholder:text-black border border-black "
