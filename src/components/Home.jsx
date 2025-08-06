@@ -144,7 +144,10 @@ const Home = () => {
 
   const navigate = useNavigate();
   function goToJoinRoom() {
-    navigate("/joinroom");
+    navigate("/joinroom",{state:{type : "join"}});
+  }
+  function goToCreateRoom(){
+    navigate("/joinroom",{state :{type: "create"}});
   }
   return (
     <div
@@ -171,8 +174,9 @@ const Home = () => {
           </div>
           {/*//! button */}
           <Magnet padding={50} disabled={false} magnetStrength={20}>
-            <div className="flex">
-              <WrapButton onClick={goToJoinRoom}>Create Room</WrapButton>
+            <div className="flex flex-col items-start gap-[1rem] md:flex-row">
+              <WrapButton onClick={goToCreateRoom}>Create Room</WrapButton>
+              <WrapButton onClick={goToJoinRoom} className="bg-white">Join Room</WrapButton>
             </div>
           </Magnet>
         </div>

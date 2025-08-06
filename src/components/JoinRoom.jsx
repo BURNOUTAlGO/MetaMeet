@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 import {
   AnimatedSpan,
@@ -16,6 +18,9 @@ import LiquidChrome from "../tailwind/LiquidChrome/LiquidChrome";
 const JoinRoom = () => {
   const [roomId, setRoomId] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const type = location.state?.type || "create"; //!Agar location.state.type mil gaya, to usko type mein store karo.
+                                                 //!Agar nahi mila, to "create" ko default value ke roop mein use karo.
   //  AVATARS
   const avatars = [
     {
@@ -61,29 +66,33 @@ const JoinRoom = () => {
   return (
     <div className="h-[100vh] w-[100%] bg-[#c7c7c7] relative flex justify-center items-center text-white custom-font2">
       <div className="h-[100%] w-[100%] relative ">
-        {/* <Dither
-          waveColor={[0.5, 0.5, 0.5]}
-          disableAnimation={false}
-          enableMouseInteraction={true}
-          mouseRadius={0.3}
-          colorNum={4}
-          waveAmplitude={0.56}
-          waveFrequency={3}
-          waveSpeed={0.02}
-        /> */}
-        <LiquidChrome
-          baseColor={[0, 0, 0.1]}
-          speed={0.6}
-          amplitude={0.45}
-          interactive={true}
-        />
+
+        {type === "create" ? (
+          <LiquidChrome
+            baseColor={[0, 0, 0.1]}
+            speed={0.6}
+            amplitude={0.45}
+            interactive={true}
+          />
+        ) : (
+          <Dither
+            waveColor={[0.5, 0.5, 0.5]}
+            disableAnimation={false}
+            enableMouseInteraction={true}
+            mouseRadius={0.3}
+            colorNum={4}
+            waveAmplitude={0.56}
+            waveFrequency={3}
+            waveSpeed={0.02}
+          />
+        )}
       </div>
 
       <div className="h-[400px] w-[90%]  rounded-2xl  absolute flex justify-center items-center md:w-[400px]">
         <Terminal className="bg-white text-black relative overflow-hidden ">
           <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
           <TypingAnimation className="text-[25px]">
-            &gt; Create RoomId
+            {type === "create" ? "> Create RoomId" : "> Join RoomId"}
           </TypingAnimation>
 
           <AnimatedSpan delay={1500} className="text-green-500">
@@ -103,7 +112,7 @@ const JoinRoom = () => {
           </AnimatedSpan>
           <input
             type="text"
-            placeholder="Enter Your RoomID"
+            placeholder={type === "create" ? "Create your RoomId" : "Enter your JoinId"}
             value={roomId}
             onChange={(e) => setRoomId(e.target.value)}
             className="w-[250px] bg-[white] text-black rounded-[10px] p-[10px] mt-[1rem] placeholder:text-black border border-black "
@@ -127,18 +136,4 @@ const JoinRoom = () => {
 };
 
 export default JoinRoom;
-// <h1 className="text-4xl font-bold mb-6 ">Join a Meeting</h1>
-// <input
-//   className="h-[2rem] w-[200px] p-[1rem] bg-amber-400 text-gray-950 border-2 border-b-black"
-//   type="text"
-//   placeholder="Enter Room ID"
-//   value={roomId}
-//   onChange={(e) => setRoomId(e.target.value)}
-// />
 
-// <button
-//   className="mt-5 bg-blue-600 text-white px-6 py-2 rounded-lg font-medium"
-//   onClick={handleJoin}
-// >
-//   Join Meet
-// </button>
